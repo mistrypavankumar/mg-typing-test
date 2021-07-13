@@ -39,11 +39,15 @@ const TypingCard = () => {
 export default TypingCard;
 
 const CardContainer = styled.div`
-  width: 60vw;
+  width: 100%;
   height: 100%;
   border-radius: 1rem;
   background-color: #fff;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    width: 60vw;
+  }
 
   .inner {
     padding: 30px;

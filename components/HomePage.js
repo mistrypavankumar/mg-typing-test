@@ -25,7 +25,8 @@ const HomePage = () => {
           <RightContainer>
             <Image src={bgImg} alt="typing-gril" width="" height="" />
             <h3>
-              Developered By <br /> <span>Mistry Pavan kumar</span>
+              Developer:
+              <span> Mistry Pavan kumar</span>
             </h3>
           </RightContainer>
         </MainContainer>
@@ -38,8 +39,13 @@ export default HomePage;
 
 const Div = styled.div`
   padding: 10px;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+
+  @media (min-width: 768px) {
+    height: 100vh;
+    width: 100vw;
+  }
 `;
 
 const MainDiv = styled.div`
@@ -49,6 +55,7 @@ const MainDiv = styled.div`
   border-radius: 0.8rem;
   box-shadow: 0 0 10px 3px rgba(33, 0, 87, 0.5);
 `;
+
 const Logo = styled.div`
   display: flex;
   justify-content: center;
@@ -89,7 +96,7 @@ const Logo = styled.div`
       }
     }
 
-    @media screen and (min-width: 768px) {
+    @media (min-width: 768px) {
       font-size: 2rem;
     }
   }
@@ -97,9 +104,31 @@ const Logo = styled.div`
 
 const MainContainer = styled.div`
   display: grid;
-  width: 1200px;
-  margin: auto;
-  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  padding: 0 20px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
+
 const LeftContainer = styled.div``;
-const RightContainer = styled.div``;
+const RightContainer = styled.div`
+  position: relative;
+  width: 100%;
+
+  h3 {
+    width: 300px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #ffffff;
+
+    span {
+      color: ${headingAnimationColor};
+    }
+  }
+`;
