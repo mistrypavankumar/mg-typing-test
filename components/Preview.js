@@ -11,8 +11,8 @@ const Preview = (props) => {
 
         if (index < props.userInput.length) {
           color =
-            data === props.userInput[i]
-              ? "hsl(158,100%,50%)"
+            data === props.userInput[index]
+              ? "hsl(158,100%,40%)"
               : "hsl(0,100%,50%)";
         }
 
@@ -33,7 +33,7 @@ const Preview = (props) => {
 export default Preview;
 
 const MainDiv = styled.div`
-  padding: 1rem;
+  padding: 1.2rem;
   height: auto;
   width: 100%;
   background-color: ${lightSecondaryColor};
