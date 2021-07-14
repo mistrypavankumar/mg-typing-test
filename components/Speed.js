@@ -1,11 +1,29 @@
+import styled from "styled-components";
+import { headingAnimationColor, primaryColor } from "../constants/color";
+
 const Speed = (props) => {
   if (props.symbols !== 0 && props.sec !== 0) {
     const wpm = props.symbols / 5 / (props.sec / 60);
 
-    return <div>{Math.floor(Math.random(wpm) * 100)} wpm</div>;
+    return (
+      <Div isSpeed={wpm >= 50}>
+        <h3>{Math.round(wpm)} wpm</h3>
+      </Div>
+    );
   }
 
-  return null;
+  return (
+    <Div>
+      <h3>0 wpm</h3>
+    </Div>
+  );
 };
 
 export default Speed;
+
+const Div = styled.div`
+  color: ${({ isSpeed }) => (isSpeed ? headingAnimationColor : primaryColor)};
+  h3 {
+    line-height: 0.2rem;
+  }
+`;

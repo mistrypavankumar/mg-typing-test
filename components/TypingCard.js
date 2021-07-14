@@ -6,6 +6,7 @@ import {
   headingColor,
   lightSecondaryColor1,
   primaryColor,
+  secondaryColor,
 } from "../constants/color";
 import Speed from "./Speed";
 
@@ -102,10 +103,11 @@ export default TypingCard;
 
 const CardContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   border-radius: 1rem;
   background-color: #fff;
   overflow: hidden;
+  box-shadow: 0 0 15px 2px hsl(258, 100%, 40%);
 
   @media (min-width: 768px) {
     width: 60vw;
@@ -159,14 +161,18 @@ const TextArea = styled.textarea`
   scrollbar-face-color: #ff8c00;
 
   :focus {
-    background-color: ${lightSecondaryColor1};
+    background-color: ${secondaryColor};
     box-shadow: 0 0 10px 1px rgba(154, 129, 225, 0.8);
+    color: #ffffff;
   }
 `;
 
 const Content = styled.div`
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  padding-top: 20px;
 `;
 
 const Button = styled.button`
@@ -179,9 +185,6 @@ const Button = styled.button`
   font-size: 1rem;
   font-weight: 600;
 
-  position: absolute;
-  right: 0;
-  top: 10px;
   transition: opacity 0.5s, transform 0.5s ease-in-out;
 
   :hover {

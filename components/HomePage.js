@@ -43,7 +43,7 @@ const Div = styled.div`
   height: auto;
 
   @media (min-width: 768px) {
-    height: 100vh;
+    height: auto;
     width: 100vw;
   }
 `;
@@ -69,6 +69,7 @@ const Logo = styled.div`
     position: relative;
     display: inline-block;
     white-space: nowrap;
+    line-height: 2rem;
 
     ::before {
       content: attr(data-text);
@@ -97,7 +98,8 @@ const Logo = styled.div`
     }
 
     @media (min-width: 768px) {
-      font-size: 2rem;
+      font-size: 1.8rem;
+      line-height: 2.3rem;
     }
   }
 `;
