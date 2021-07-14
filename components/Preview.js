@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { lightSecondaryColor } from "../constants/color";
+import { lightSecondaryColor, secondaryColor } from "../constants/color";
 
 const Preview = (props) => {
   const text = props.text.split("");
@@ -7,20 +7,19 @@ const Preview = (props) => {
   return (
     <MainDiv>
       {text.map((data, index) => {
-        let color;
+        let color, bgColor;
 
         if (index < props.userInput.length) {
-          color =
-            data === props.userInput[index]
-              ? "hsl(158,100%,40%)"
-              : "hsl(0,100%,50%)";
+          bgColor =
+            data === props.userInput[index] ? "transparent" : "hsl(0,100%,50%)";
+          color = data === props.userInput[index] ? "hsl(158,100%,50%)" : null;
         }
 
         return (
           <span
             className="textSize"
             key={index}
-            style={{ backgroundColor: color }}
+            style={{ color: color, backgroundColor: bgColor }}
           >
             {data}
           </span>
@@ -36,7 +35,7 @@ const MainDiv = styled.div`
   padding: 1.2rem;
   height: auto;
   width: 100%;
-  background-color: ${lightSecondaryColor};
+  background-color: ${secondaryColor};
   border-radius: 15px;
   box-shadow: 0 0 10px 1px rgba(154, 129, 225, 0.8);
   color: #ffff;
