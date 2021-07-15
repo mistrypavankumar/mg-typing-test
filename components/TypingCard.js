@@ -39,10 +39,11 @@ class TypingCard extends Component {
   };
 
   onFinished = (userInput) => {
-    if (userInput === this.state.text) {
-      clearInterval(this.interval);
-      this.setState({ finished: true });
-    } else if (userInput === this.state.text.length) {
+    if (
+      userInput === this.state.text ||
+      userInput.length === this.state.text.length ||
+      this.state.countDown === 0
+    ) {
       clearInterval(this.interval);
       this.setState({ finished: true });
     }
@@ -109,7 +110,7 @@ const CardContainer = styled.div`
   overflow: hidden;
   box-shadow: 0 0 15px 2px hsl(258, 100%, 40%);
 
-  @media (min-width: 768px) {
+  @media (min-width: 986px) {
     width: 60vw;
   }
 
@@ -152,7 +153,6 @@ const TextArea = styled.textarea`
   border: none;
   outline: none;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
-  opacity: 0.7;
   font-size: 1rem;
   padding: 10px 1rem;
   resize: none;
@@ -161,6 +161,7 @@ const TextArea = styled.textarea`
   scrollbar-face-color: #ff8c00;
 
   :focus {
+    opacity: 0.9;
     background-color: ${secondaryColor};
     box-shadow: 0 0 10px 1px rgba(154, 129, 225, 0.8);
     color: #ffffff;
@@ -180,16 +181,17 @@ const Button = styled.button`
   outline: none;
   padding: 0.7rem 1.5rem;
   border-radius: 10px;
-  background-color: ${primaryColor};
+  background-color: ${secondaryColor};
   color: #ffff;
   font-size: 1rem;
   font-weight: 600;
 
-  transition: opacity 0.5s, transform 0.5s ease-in-out;
+  transition: opacity 0.5s, background-color 0.5s, transform 0.5s linear;
+  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.4);
 
   :hover {
     cursor: pointer;
-    opacity: 0.8;
     transform: scale(1.05);
+    background-color: ${primaryColor};
   }
 `;
