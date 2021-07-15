@@ -43,7 +43,7 @@ const Div = styled.div`
   height: auto;
 
   @media (min-width: 768px) {
-    height: auto;
+    height: 100vh;
     width: 100vw;
   }
 `;
