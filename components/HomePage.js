@@ -6,7 +6,6 @@ import {
   headingAnimationColor,
   headingColor,
   primaryColor,
-  secondaryColor,
 } from "../constants/color";
 import TypingCard from "./TypingCard";
 
@@ -42,7 +41,7 @@ const Div = styled.div`
   width: 100%;
   height: auto;
 
-  @media (min-width: 768px) {
+  @media (min-width: 968px) {
     height: 100vh;
     width: 100vw;
   }
@@ -110,7 +109,7 @@ const MainContainer = styled.div`
   padding: 0 20px;
   grid-template-columns: repeat(1, minmax(0, 1fr));
 
-  @media (min-width: 768px) {
+  @media (min-width: 986px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
@@ -119,12 +118,16 @@ const LeftContainer = styled.div``;
 const RightContainer = styled.div`
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   h3 {
     width: 300px;
     position: absolute;
     bottom: 0;
     left: 50%;
+    line-height: 2rem;
     transform: translateX(-50%);
     text-align: center;
     color: #ffffff;
