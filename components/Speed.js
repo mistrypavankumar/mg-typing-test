@@ -1,13 +1,27 @@
+import { useRef } from "react";
 import styled from "styled-components";
 import { headingAnimationColor, primaryColor } from "../constants/color";
 
 const Speed = (props) => {
+  const elementRef = useRef(0);
+
+  useEffect(() => {
+    if (props.countDown === 0) {
+      elementRef.current.click();
+    }
+  });
+
   if (props.symbols !== 0 && props.sec !== 0) {
     const wpm = props.symbols / 5 / (props.sec / 60);
 
     return (
       <Div isSpeed={wpm >= 50}>
-        <h3>{Math.round(wpm)} wpm</h3>
+        <h3
+          ref={elementRef}
+          onClick={() => props.typingCardCallback(Math.round(wpm))}
+        >
+          {Math.round(wpm)} wpm
+        </h3>
       </Div>
     );
   }
