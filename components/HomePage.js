@@ -1,3 +1,4 @@
+import {useState} from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import logo from "../public/images/mg-typing-test-logo.png";
@@ -10,16 +11,22 @@ import {
 import TypingCard from "./TypingCard";
 
 const HomePage = () => {
+  const [currentSpeed, setCurrentSpeed] = useState(50);
+
+  const homepageCallback = (currentSpeed) => {
+    setCurrentSpeed(currentSpeed);
+  };
+
   return (
     <Div>
       <MainDiv>
         <Logo>
           <Image src={logo} alt="Mg-Typing-Test" width="60" height="60" />
-          <h1 data-text="MG-Typing Test">MG-Typing Test</h1>
+          <h1 data-text="MG-Typing Test">MG-Typing Test </h1> {currentSpeed}
         </Logo>
         <MainContainer>
           <LeftContainer>
-            <TypingCard />
+            <TypingCard homepageCallback={homepageCallback} />
           </LeftContainer>
           <RightContainer>
             <Image src={bgImg} alt="typing-gril" width="" height="" />
