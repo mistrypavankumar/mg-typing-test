@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef,useEffect } from "react";
 import styled from "styled-components";
 import { headingAnimationColor, primaryColor } from "../constants/color";
 
