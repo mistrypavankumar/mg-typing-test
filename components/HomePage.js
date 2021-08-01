@@ -1,7 +1,6 @@
-import {useState} from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import logo from "../public/images/mg-typing-test-logo.png";
 import bgImg from "../public/images/typing-girl.svg";
 import {
   headingAnimationColor,
@@ -9,6 +8,8 @@ import {
   primaryColor,
 } from "../constants/color";
 import TypingCard from "./TypingCard";
+import HighestSpeed from "./NavHeader";
+import NavHeader from "./NavHeader";
 
 const HomePage = () => {
   const [currentSpeed, setCurrentSpeed] = useState(50);
@@ -20,10 +21,7 @@ const HomePage = () => {
   return (
     <Div>
       <MainDiv>
-        <Logo>
-          <Image src={logo} alt="Mg-Typing-Test" width="60" height="60" />
-          <h1 data-text="MG-Typing Test">MG-Typing Test </h1> {currentSpeed}
-        </Logo>
+        <NavHeader currentSpeed={currentSpeed} />
         <MainContainer>
           <LeftContainer>
             <TypingCard homepageCallback={homepageCallback} />
@@ -60,54 +58,7 @@ const MainDiv = styled.div`
   background-color: ${primaryColor};
   border-radius: 0.8rem;
   box-shadow: 0 0 10px 3px rgba(33, 0, 87, 0.5);
-`;
-
-const Logo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.8rem 0;
-
-  h1 {
-    margin-left: 1rem;
-    color: ${headingColor};
-    font-size: 1.5rem;
-    position: relative;
-    display: inline-block;
-    white-space: nowrap;
-    line-height: 2rem;
-
-    ::before {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 0;
-      border-right: 3px solid ${headingAnimationColor};
-      color: ${headingAnimationColor};
-      overflow: hidden;
-
-      animation: animate 6s linear infinite alternate;
-      --webkit-animation: animate 6s linear infinite alternate;
-
-      @keyframes animate {
-        0% {
-          width: 0;
-        }
-        50% {
-          width: 100%;
-        }
-        100% {
-          width: 0;
-        }
-      }
-    }
-
-    @media (min-width: 768px) {
-      font-size: 1.8rem;
-      line-height: 2.3rem;
-    }
-  }
+  overflow: hidden;
 `;
 
 const MainContainer = styled.div`

@@ -95,6 +95,7 @@ class TypingCard extends Component {
               typingCardCallback={(speed) => this.props.homepageCallback(speed)}
               sec={this.state.sec}
               symbols={this.state.symbols}
+              isFinished={this.state.finished}
             />
 
             <Button onClick={this.onRestart}> Restart </Button>

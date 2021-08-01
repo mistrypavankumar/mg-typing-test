@@ -1,4 +1,4 @@
-import { useRef,useEffect } from "react";
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { headingAnimationColor, primaryColor } from "../constants/color";
 
@@ -6,7 +6,7 @@ const Speed = (props) => {
   const elementRef = useRef(0);
 
   useEffect(() => {
-    if (props.countDown === 0) {
+    if (props.countDown === 0 || props.isFinished) {
       elementRef.current.click();
     }
   });
