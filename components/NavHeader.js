@@ -20,7 +20,7 @@ const NavHeader = ({ currentSpeed }) => {
       <HighestSpeedContainer currentSpeed={currentSpeed}>
         <h2>
           Highest Speed:{" "}
-          <span>{currentSpeed > 50 ? currentSpeed : 50} wpm </span>{" "}
+          <span>{currentSpeed > 50 ? currentSpeed : 0} wpm </span>{" "}
         </h2>
 
         {currentSpeed > 50 && <Animation></Animation>}
