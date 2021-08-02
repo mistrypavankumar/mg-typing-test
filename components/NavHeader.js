@@ -41,12 +41,12 @@ const HighestSpeedContainer = styled.div`
   h2 {
     padding-right: 50px;
     color: ${({ currentSpeed }) =>
-      currentSpeed > 50 ? primaryColor : headingColor};
+      currentSpeed > 10 ? primaryColor : headingColor};
     font-weight: bold;
 
     span {
       color: ${({ currentSpeed }) =>
-        currentSpeed > 50 ? success : headingAnimationColor};
+        currentSpeed > 10 ? success : headingAnimationColor};
     }
   }
   z-index: 20;
