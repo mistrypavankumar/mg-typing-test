@@ -12,7 +12,7 @@ import HighestSpeed from "./NavHeader";
 import NavHeader from "./NavHeader";
 
 const HomePage = () => {
-  const [currentSpeed, setCurrentSpeed] = useState(50);
+  const [currentSpeed, setCurrentSpeed] = useState(0);
 
   const homepageCallback = (currentSpeed) => {
     setCurrentSpeed(currentSpeed);
