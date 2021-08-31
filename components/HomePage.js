@@ -2,17 +2,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import bgImg from "../public/images/typing-girl.svg";
-import {
-  headingAnimationColor,
-  headingColor,
-  primaryColor,
-} from "../constants/color";
+import { headingAnimationColor, primaryColor } from "../constants/color";
 import TypingCard from "./TypingCard";
-import HighestSpeed from "./NavHeader";
 import NavHeader from "./NavHeader";
 
 const HomePage = () => {
-  const [currentSpeed, setCurrentSpeed] = useState(50);
+  const [currentSpeed, setCurrentSpeed] = useState(0);
 
   const homepageCallback = (currentSpeed) => {
     setCurrentSpeed(currentSpeed);
