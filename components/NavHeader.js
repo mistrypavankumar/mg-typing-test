@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import styled, { keyframes } from "styled-components";
 
@@ -10,6 +11,30 @@ import {
 import logo from "../public/images/mg-typing-test-logo.png";
 
 const NavHeader = ({ currentSpeed }) => {
+  const [highestSpeed, setHighestSpeed] = useState(0);
+  const [isTrue, setIsTrue] = useState(false);
+
+  /* Here we are setting highest speed only when highest speed is 
+      less than highestSpeed
+  */
+  if (highestSpeed < currentSpeed) {
+    setHighestSpeed(currentSpeed);
+    setIsTrue(true);
+  }
+
+  if (isTrue) {
+    // setting data to the local storage
+    localStorage.setItem("highestSpeed", highestSpeed);
+    localStorage.setItem("isTrue", isTrue);
+  }
+
+  useEffect(() => {
+    // retriving data from the local storage
+    const isTrue = localStorage.getItem("isTrue") === "true";
+    const highestSpeed = isTrue ? localStorage.getItem("highestSpeed") : "";
+    setHighestSpeed(highestSpeed);
+  }, []);
+
   return (
     <MainDiv>
       <Logo>
@@ -17,13 +42,15 @@ const NavHeader = ({ currentSpeed }) => {
         <h1 data-text="MG-Typing Test">MG-Typing Test </h1>
       </Logo>
 
-      <HighestSpeedContainer currentSpeed={currentSpeed}>
+      <HighestSpeedContainer isTrue={isTrue} currentSpeed={currentSpeed}>
         <h2>
           Highest Speed:{" "}
-          <span>{currentSpeed > 10 ? currentSpeed : 0} wpm </span>{" "}
+          <span>
+            {currentSpeed >= highestSpeed ? currentSpeed : highestSpeed} wpm{" "}
+          </span>{" "}
         </h2>
 
-        {currentSpeed > 10 && <Animation></Animation>}
+        {isTrue ? <Animation></Animation> : null}
       </HighestSpeedContainer>
     </MainDiv>
   );
@@ -40,13 +67,13 @@ const MainDiv = styled.div`
 const HighestSpeedContainer = styled.div`
   h2 {
     padding-right: 50px;
-    color: ${({ currentSpeed }) =>
-      currentSpeed > 10 ? primaryColor : headingColor};
+    color: ${({ isTrue, currentSpeed }) =>
+      isTrue ? primaryColor : headingColor};
     font-weight: bold;
 
     span {
-      color: ${({ currentSpeed }) =>
-        currentSpeed > 10 ? success : headingAnimationColor};
+      color: ${({ isTrue, currentSpeed }) =>
+        isTrue ? success : headingAnimationColor};
     }
   }
   z-index: 20;
@@ -58,12 +85,14 @@ const moveAndResize = keyframes`
     width: 10px;
     height: 10px;
     right: -10%;
+    top: -50%;
     opacity: 0;
   }
   to{
     width: 400px;
     height: 350px;
     right: -10%;
+    top: -50%;
     opacity: 1;
   }
 `;
